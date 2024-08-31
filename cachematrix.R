@@ -1,4 +1,4 @@
-## Assigment 2:  Compute a special matrix that is able to cache is computed inverse matrix
+## Assigment 2:  Compute a special matrix that is able to cache its computed inverse matrix
 ## Author: João Miguel
 
 ## Creates a special Matrix that is able to cache its inverse
@@ -31,7 +31,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## Receives a special matrix to compute its inverse matrix in case 
-## its data was changed and the new ivnerse wasn't cached yet
+## its data was changed and the new inverse was not cached yet
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
