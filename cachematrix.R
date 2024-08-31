@@ -2,32 +2,29 @@
 ## Author: João Miguel
 
 ## Creates a special Matrix that is able to cache its inverse
-## set, get: functions to set or get the global matrix data
-## setinv, getinv:: functions to set or get cached inverse matrix
-## haschanged: function that returns TRUE in case the Matrix was set (changed) after its inverse was cached
 
 makeCacheMatrix <- function(x = matrix()) {
-        changed <- TRUE
         inv <- NULL
+        
+        # Function to get the global matrix data
         set <- function(y) {
                 x <<- y
+                # Clean cached inverse matrix, as data changed
                 inv <<- NULL
-                changed <<- TRUE
         }
         
+        # Function to get the global matrix data
         get <- function() x
         
-        haschanged <- function() changed
-        
+        # Function to set cached inverse matrix
         setinv <- function(inv_matrix) {
-                inv <<- inv
-                changed <<- FALSE
+                inv <<- inv_matrix
         }
         
+        # Function to get cached inverse matrix
         getinv <- function() inv
         
         list(set = set, get = get,
-             haschanged = haschanged,
              setinv = setinv,
              getinv = getinv)
 }
@@ -40,7 +37,7 @@ cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
         inv <- x$getinv()
         
-        if (is.null(inv) || x$haschanged()) {
+        if (is.null(inv)) {
                 # Inverse matrix needs to be computed
                 data <- x$get()
                 inv <- solve(data)
