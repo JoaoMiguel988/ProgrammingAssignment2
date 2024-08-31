@@ -6,7 +6,7 @@
 makeCacheMatrix <- function(x = matrix()) {
         inv <- NULL
         
-        # Function to get the global matrix data
+        # Function to set the global matrix data and clean cached inverse matrix
         set <- function(y) {
                 x <<- y
                 # Clean cached inverse matrix, as data changed
